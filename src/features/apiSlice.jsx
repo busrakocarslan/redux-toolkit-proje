@@ -14,28 +14,29 @@ async()=>{
   const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
   const {data}=await axios(url)
   console.log(data.articles);
+  return data.articles // return yapmazsan payload gelmiyor
 }//api istek func
 )// 2.aşama bu
 
 const apiSlice = createSlice({
-  name: "second",
+  name: "news",
   initialState,
   reducers: {},
-  extraReducers:(builder)=>{//action içinden payload destruc edildi.
+  extraReducers: (builder) => {
     builder
-      .addCase(getNews.pending, (state, action) => { 
-        state.loading = true;
+      .addCase(getNews.pending, (state, action) => {
+        state.loading = true
       })
-    .addCase(getNews.fulfilled,(state,{payload})=>{
-      state.loading=false, 
-      state.newsData=payload
-  }).addCase(getNews.rejected,(state,{payload})=>{
-    state.loading=false, 
-    state.error=true
-  })
-},
+      .addCase(getNews.fulfilled, (state, { payload }) => {
+        state.loading = false
+        state.newsData = payload
+      })
+      .addCase(getNews.rejected, (state) => {
+        state.loading = false
+        state.error = true
+      })
+  },
 })
-
 
 export const {} = apiSlice.actions
 
