@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../component/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
-import { getNews } from '../features/apiSlice'
+import { clearNewsData, getNews } from '../features/apiSlice'
 import loadingGif from "../assets/loading.gif"
 import { GiH2O } from 'react-icons/gi'
 
@@ -10,6 +10,8 @@ const Home = () => {
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(getNews())
+    return()=>
+      dispatch(clearNewsData())// burada news comp Dom'dan kaldırıldıktan hemen sonra redux global statedeki newsdata verilerini siliyor return kımsında
    
   }, [])
   

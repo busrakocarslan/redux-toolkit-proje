@@ -2,12 +2,14 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { clearUser } from '../features/loginSlice';
+import { clearNewsData } from '../features/apiSlice';
 
 const Navbar = () => {
   const {user} = useSelector(state => state.login);
   const dispatch=useDispatch()
  const handleLogout=()=>{
   dispatch(clearUser())
+  // dispatch(clearNewsData()) useeffect te return ile silme işlemi yapıldı home.jsx e bak
 
  }
 

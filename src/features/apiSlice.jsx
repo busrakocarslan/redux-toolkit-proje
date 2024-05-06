@@ -21,7 +21,11 @@ async()=>{
 const apiSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
+  reducers: {
+    clearNewsData:(state)=>{
+      state.newsData=[]
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getNews.pending, (state, action) => {
@@ -38,7 +42,7 @@ const apiSlice = createSlice({
   },
 })
 
-export const {} = apiSlice.actions
+export const {clearNewsData} = apiSlice.actions
 
 export default apiSlice.reducer
 
