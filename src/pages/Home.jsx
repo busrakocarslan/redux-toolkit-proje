@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import Navbar from '../component/Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getNews } from '../features/apiSlice'
+import loadingGif from "../assets/loading.gif"
+import { GiH2O } from 'react-icons/gi'
 
 const Home = () => {
-  const { newsData }=useSelector(state=>state.text)
+  const { newsData,loading,error }=useSelector(state=>state.text)
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(getNews())
@@ -16,6 +18,8 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      {loading && <img src={loadingGif} />}
+      { error && <h2 className='text-main text-2xl text-center mt-5'>Oops Something went wrong</h2> }
       <div className='w-[90%] m-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
   {newsData?.map((item, key) => (
     <article className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm" key={key}>
