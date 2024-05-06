@@ -7,7 +7,7 @@ export const store=configureStore({
         login:loginReducer,
         text:apiReducer
      },
-     devTools:process.env.NODE_ENV !=="!production",
+    //  devTools:process.env.NODE_ENV !=="!production",
      //? eger gelistirme asamasi production ise o zaman yukaridaki ifade false dondurur ve dolayisiyla devTool kullanima kapali olur.
 })
 // aslında oluşturduğumuz adlar apislice ve loginslice idi. ancak best prac de reduser kullanmak gerekli olduğundan ve exprot defaultla yolladığımızdan direk isminşi değiştirerek yazım.  redux daki gibi combinereduser kullanmadık doğrudan birrada yazdık. 
